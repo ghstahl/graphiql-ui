@@ -22,13 +22,14 @@
   "author": "Brendan Warkentin <faazshift@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "electron": "^1.4.15",
-    "graphiql": "^0.9.3",
-    "graphql": "^0.9.1",
-    "material-ui": "^0.17.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-tap-event-plugin": "^2.0.1"
+    "electron": "^1.7.10",
+    "electron-edge-js": "^8.2.9",
+    "graphiql": "^0.11.10",
+    "graphql": "^0.12.3",
+    "material-ui": "^0.20.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-tap-event-plugin": "^3.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
