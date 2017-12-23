@@ -1,0 +1,33 @@
+{
+   // Use IntelliSense to find out which attributes exist for C# debugging
+   // Use hover for the description of the existing attributes
+   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+   "version": "0.2.0",
+   "configurations": [
+    {
+      "name": "Debug Main Process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "program": "${workspaceRoot}/main.js"
+    },
+    {
+      "name": "Debug Renderer Process",
+      "type": "chrome",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "runtimeArgs": [
+        "${workspaceRoot}/main.js",
+        "--remote-debugging-port=9222"
+      ],
+      "webRoot": "${workspaceRoot}"
+    }
+  ]
+}
