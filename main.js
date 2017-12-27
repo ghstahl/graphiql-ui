@@ -1,7 +1,11 @@
-let {app, session, BrowserWindow} = require('electron');
+let { app, session, BrowserWindow } = require('electron');
 
 let path = require('path');
 let url = require('url');
+let LocalFetch = require('./local-fetch')
+
+let localFetch = new LocalFetch();
+global.localFetch = localFetch.localFetch;
 
 class GraphiQL_UI {
     constructor(config = {}) {
@@ -32,15 +36,15 @@ class GraphiQL_UI {
 
         // Disable pesky origin control for web requests
         session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
-            if('Origin' in details.requestHeaders && details.requestHeaders['Origin'] == 'null') {
+            if ('Origin' in details.requestHeaders && details.requestHeaders['Origin'] == 'null') {
                 delete details.requestHeaders['Origin'];
             }
-            callback({cancel: false, requestHeaders: details.requestHeaders});
+            callback({ cancel: false, requestHeaders: details.requestHeaders });
         });
     }
 
     createMainWindow() {
-        if(!('main' in this) || this.main === null) {
+        if (!('main' in this) || this.main === null) {
             this.main = new BrowserWindow({
                 show: false,
                 minWidth: this.config.size.minWidth,
@@ -82,14 +86,14 @@ class GraphiQL_UI {
         });
 
         app.on('window-all-closed', () => {
-            if(process.platform !== 'darwin') {
+            if (process.platform !== 'darwin') {
                 app.quit();
             }
         });
     }
 }
 
-if(require.main === module) {
+if (require.main === module) {
     let config = {};
 
     // For now, we won't use any config files

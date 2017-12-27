@@ -1,6 +1,7 @@
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+    target: 'electron',
     devtool: 'eval',
     entry: {
         'app.js': './app/src/app.jsx',
@@ -11,8 +12,7 @@ module.exports = {
         filename: '[name]'
     },
     module: {
-        loaders: [
-            {
+        loaders: [{
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
