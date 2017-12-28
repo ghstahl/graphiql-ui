@@ -66,7 +66,15 @@ module.exports = class AppMain extends React.Component {
 
         return obj;
     }
-
+   _getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
     _fetch(params) {
         let url = this.state.url;
         let isLocalUrl = url.startsWith('local://');
@@ -96,6 +104,31 @@ module.exports = class AppMain extends React.Component {
             }
         }
         if(isLocalUrl){
+            if(fetchOpts.method == 'get'){
+                let query = this._getParameterByName('query',url)
+                let operationName = this._getParameterByName('operationName',url)
+                let variables = this._getParameterByName('variables',url)
+                let namedQuery = this._getParameterByName('namedQuery',url)
+                let body = {
+                }
+                if(operationName){
+                    body.operationName = JSON.parse(operationName)
+                }
+                if(variables){
+                    body.variables = JSON.parse(variables)
+                }
+                if(query){
+                    body.query = JSON.parse(query)
+                }
+                if(namedQuery){
+                    body.namedQuery = JSON.parse(namedQuery)
+                }
+                var pathArray = url.split( '?' );
+                url = pathArray[0];
+                fetchOpts.method = 'post';
+                fetchOpts.headers["Content-Type"] = 'application/json';
+                fetchOpts.body = body;
+            }
             return localFetch(url, fetchOpts).then((response) => {
                 this.setState({status: response.status});
                 let myPromise = new Promise((resolve, reject) => {
