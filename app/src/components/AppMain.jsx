@@ -1,3 +1,4 @@
+let Electron = require('electron');
 let React = require('react');
 let GraphiQL = require('graphiql');
 
@@ -9,6 +10,11 @@ injectTapEventPlugin();
 let StorageHelper = require('../helpers/StorageHelper');
 
 let HeaderModal = require('./HeaderModal');
+let localFetch = Electron.remote.getGlobal('localFetch')
+console.log(localFetch)
+///let fnc = require('electron').remote.getGlobal('getFile')
+///let localFetch = require('electron').remote.getGlobal('localFetch')
+//console.log(fnc)
 
 // GraphiQL isolation wrapper component
 class GraphiQLWrapper extends React.Component {
@@ -63,6 +69,7 @@ module.exports = class AppMain extends React.Component {
 
     _fetch(params) {
         let url = this.state.url;
+        let isLocalUrl = url.startsWith('local://');
         let fetchOpts = {
             method: this.state.method,
             headers: Object.assign({
@@ -82,15 +89,36 @@ module.exports = class AppMain extends React.Component {
             }
         } else {
             fetchOpts.headers['Content-Type'] = 'application/json';
-            fetchOpts.body = JSON.stringify(params);
+            if(isLocalUrl){
+                fetchOpts.body = params;
+            }else{
+                fetchOpts.body = JSON.stringify(params);
+            }
         }
-
-        return window.fetch(url, fetchOpts).then((response) => {
-            this.setState({status: response.status});
-            return response.json().catch((err) => {
-                throw "Not a JSON response! Do the URL and request method refer to a GraphQL endpoint?";
+        if(isLocalUrl){
+            return localFetch(url, fetchOpts).then((response) => {
+                this.setState({status: response.status});
+                let myPromise = new Promise((resolve, reject) => {
+                   resolve(response.value)
+            
+                });
+                return myPromise;
+         
             });
-        });
+        }else{
+            return window.fetch(url, fetchOpts).then((response) => {
+                this.setState({status: response.status});
+                let json = response.json().catch((err) => {
+                    throw "Not a JSON response! Do the URL and request method refer to a GraphQL endpoint?";
+                });
+                let dd = json.then((res)=>{
+                    console.log(res)
+                    return res;
+                });
+                return json;
+            });
+        }
+        
     }
 
     handleURLChange(ev, text) {
