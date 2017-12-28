@@ -5,6 +5,8 @@
 
 A minimal, electron-based desktop user interface for the GraphiQL IDE
 
+# Modifications 
+[graphql-endpoints](./graphql-endpoints.md) 
 # Downloads
 
 For 64-bit Windows and Linux, there are prebuilt packages attached to the releases on Github. See [this](https://github.com/faazshift/graphiql-ui/releases) page. Download the appropriate release for your platform, extract it where you'd like, optionally create a symlink/shortcut to the executable, and enjoy.
