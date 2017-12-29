@@ -6,7 +6,7 @@
 A minimal, electron-based desktop user interface for the GraphiQL IDE
 
 # Modifications 
-[graphql-endpoints](./graphql-endpoints.md) 
+[graphql-endpoints](./graphql-endpoints.md)   
 [json-graphql-server-endpoints](./json-graphql-server-endpoints.md)  
 
 # Downloads
