@@ -5,6 +5,7 @@ This project has been modified, using electron-edge-js, to load the fetch.core.d
 ```
 local://v1/graphQL/post
 ```
+## Test Query
 ## Query 
 ```
 query q($id: String!, $treatment: String!, $culture: String!) {
@@ -27,6 +28,31 @@ query q($id: String!, $treatment: String!, $culture: String!) {
       "id": "P7.Main.Resources.Main,P7.Main",
       "treatment": "kva",
       "culture": "fr-FR"
+    }
+  }
+}
+```
+## Program Query  
+## Query 
+```
+query q($displayName: String!) {
+  program(input:{displayName:$displayName}){
+    isInstalled
+    displayName
+  }
+}
+```
+## Variables 
+```
+{"displayName": "Norton Internet Security"}
+```
+## Produces 
+```
+{
+  "data": {
+    "program": {
+      "isInstalled": true,
+      "displayName": "Norton Internet Security"
     }
   }
 }
