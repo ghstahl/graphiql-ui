@@ -1650,7 +1650,9 @@
       },
       "ProgramsCommand/1.0.0": {
         "dependencies": {
+          "Autofac": "4.6.2",
           "Command.Common": "1.0.0",
+          "P7.GraphQLCore": "1.0.0",
           "Programs.Repository": "1.0.0",
           "Synoptic.CommandAction": "1.0.0"
         },
