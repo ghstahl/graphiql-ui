@@ -24,7 +24,7 @@ localFetch('local://v1/test/hello-there', {
         console.log(e);
     });
 ```
-where hello-there is implemented [Here](./src/LocalFetch/SimpleCommands/TestCommands.cs)
+where fetch is implemented [Here](./Fetch.Core/Local.cs)
 
 
 
