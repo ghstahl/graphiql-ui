@@ -6,7 +6,8 @@
 A minimal, electron-based desktop user interface for the GraphiQL IDE
 
 # Modifications 
-## GraphQL is not just for the web.  
+## GraphQL is not just for the web. 
+[.NET Core Fetch.Core Project](./Fetch.Core)   
 [Local GraphQL](./graphql-endpoints.md)   
 [json-graphql-server-endpoints](./json-graphql-server-endpoints.md)  
 
