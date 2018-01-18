@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>CommandFileLoader</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Command.Contracts\Command.Contracts.csproj" />
+    <ProjectReference Include="..\Synoptic.CommandAction\Synoptic.CommandAction.csproj" />
+  </ItemGroup>
+
+</Project>

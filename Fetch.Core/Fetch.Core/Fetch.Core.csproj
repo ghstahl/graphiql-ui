@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.6.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
+    <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Command.Common\Command.Common.csproj" />
+    <ProjectReference Include="..\Command.FileLoader\Command.FileLoader.csproj" />
+    <ProjectReference Include="..\Command.GraphQL\Command.GraphQL.csproj" />
+    <ProjectReference Include="..\Command.POC.Callbacks\Command.POC.Callbacks.csproj" />
+    <ProjectReference Include="..\P7.GraphQLCore\P7.GraphQLCore.csproj" />
+    <ProjectReference Include="..\Programs.Models\Programs.Models.csproj" />
+    <ProjectReference Include="..\Programs.Repository\Programs.Repository.csproj" />
+    <ProjectReference Include="..\ProgramsCommand\ProgramsCommand.csproj" />
+    <ProjectReference Include="..\SimpleCommands\SimpleCommands.csproj" />
+    <ProjectReference Include="..\Synoptic.CommandAction\Synoptic.CommandAction.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EdgeJs">
+      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp2.0\EdgeJs.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
