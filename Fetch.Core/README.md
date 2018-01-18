@@ -8,14 +8,19 @@ For the Javascript folks, they are codeing to the same Fetch api.
 1. Use fetch(,) to call the cloud,
 2. Use localFetch(,) to call native 
 ```
-localFetch('local://v1/test/hello-there', {
-        method: 'GET',
+localFetch('local://v1/graphQL/post', {
+        method: 'post',
         headers: {
             'Content-Type': 'application/json',
-            'X-Symc-Fetch-App-Version': '1.0'
+            'Accept':'application/json'
         },
         body: {
-            name: 'I am Vader'
+            operationName:'q',
+            query: 'query q($offset: Int!,$count: Int!) {↵  installedApps(input:{offset:$offset,count:$count}){↵   currentOffset↵    nextOffset↵    count↵    installedApps{↵      displayName↵      unInstallPath↵    }↵  }↵}',
+            variables:{
+               offset:0,
+               count:2
+            }
         }
     }).then((result) => {
         document.getElementById("HelloThere").innerHTML = result.value;
