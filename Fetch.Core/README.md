@@ -33,7 +33,7 @@ where hello-there is implemented [Here](./src/LocalFetch/SimpleCommands/TestComm
 Visual Studio 2017
 build electron-quick-start-core2\src\LocalFetch\LocalFetch.sln
 ```
-[Nuclear Option Required](./docs/Nuclear-Option.md)
+[Nuclear Option Required](./Docs/Nuclear-Option.md)
 
 
 ```
